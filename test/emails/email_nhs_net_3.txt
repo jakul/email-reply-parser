@@ -2,7 +2,6 @@ Dear Recipient
 
 Message message
 
-Regards
 Sender
 
 

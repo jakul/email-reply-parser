@@ -119,6 +119,54 @@ class NHSNETEmailMessageTest(unittest.TestCase):
         message = NHSNETEmailReplyParser.read(text)
         self.assertEquals(2, len(message.fragments))
 
+    def test_regards_signature(self):
+        with open('test/emails/email_sig_1.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_sent_from_samsung_mobile(self):
+        with open('test/emails/email_sig_2.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_regards(self):
+        with open('test/emails/email_sig_3.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_Regards(self):
+        with open('test/emails/email_sig_4.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_intended_recipients_only(self):
+        with open('test/emails/email_sig_5.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_stars(self):
+        with open('test/emails/email_sig_6.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_confidential(self):
+        with open('test/emails/email_sig_7.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_underscores(self):
+        with open('test/emails/email_sig_8.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_many_thanks(self):
+        with open('test/emails/email_sig_9.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_best_regards(self):
+        with open('test/emails/email_sig_10.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_kind_regards(self):
+        with open('test/emails/email_sig_11.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_many_thanks(self):
+        with open('test/emails/email_sig_12.txt') as email:
+            self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
 
 if __name__ == '__main__':
     unittest.main()

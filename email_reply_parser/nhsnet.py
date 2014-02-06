@@ -41,3 +41,4 @@ class NHSNETEmailMessage(EmailMessage):
     """
     MULTI_QUOTE_HDR_REGEX = r'(On\s.*?wrote:|From:\s.*?Sent:\s.*?To:\s.*?Subject:\s.*?\Z|From:\s.*?To:\s.*?Subject:\s.*?Date:\s.*?\Z|From:\s.*?Subject:\s.*?To:\s.*?Date:\s.*?\Z)'
     QUOTED_REGEX = r'(>+)|(From:\s.*?Sent:\s.*?To:\s.*?Subject:\s.*?)|(From:\s.*?To:\s.*?Subject:\s.*?Date:\s.*?|From:\s.*?Subject:\s.*?To:\s.*?Date:\s.*?)'
+    SIG_REGEX = r'(--|__|-\w)|(^Sent from my (\w+\s*){1,3})|(^Sent from Samsung Mobile)|(^[*][*][*][*][*][*][*][*][*]+$)|(^[\w ]*[Rr]egards[,]?$)|(^[\w ]*[Tt]hanks[,]?$)|(This email is intended for the addressee\(s\) named above)|(This email is confidential and may also be privileged. If you are not the i)'
