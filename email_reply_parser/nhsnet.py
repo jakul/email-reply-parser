@@ -23,7 +23,7 @@ class NHSNETEmailReplyParser(object):
 
             Returns reply body message
         """
-        return NHSNETEmailMessage.read(text).reply
+        return NHSNETEmailReplyParser.read(text).reply
 
 
 class NHSNETEmailMessage(EmailMessage):
@@ -39,5 +39,5 @@ class NHSNETEmailMessage(EmailMessage):
     We search for this block (specifically the words at the start of the lines)
     and treat everything after this block as quoted.
     """
-    MULTI_QUOTE_HDR_REGEX = r'(On\s.*?wrote:|From:\s.*?Sent:\s.*?To:\s.*?Subject:\s.*?\Z)'
-    QUOTED_REGEX = r'(>+)|(From:\s.*?Sent:\s.*?To:\s.*?Subject:\s.*?)'
+    MULTI_QUOTE_HDR_REGEX = r'(On\s.*?wrote:|From:\s.*?Sent:\s.*?To:\s.*?Subject:\s.*?\Z|From:\s.*?To:\s.*?Subject:\s.*?Date:\s.*?\Z|From:\s.*?Subject:\s.*?To:\s.*?Date:\s.*?\Z)'
+    QUOTED_REGEX = r'(>+)|(From:\s.*?Sent:\s.*?To:\s.*?Subject:\s.*?)|(From:\s.*?To:\s.*?Subject:\s.*?Date:\s.*?|From:\s.*?Subject:\s.*?To:\s.*?Date:\s.*?)'
