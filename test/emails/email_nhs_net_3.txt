@@ -1,0 +1,16 @@
+Dear Recipient
+
+Message message
+
+Regards
+Sender
+
+
+From: originalsender@example.com
+Subject: Something
+To: recipient@domain.com; recipient2@domain.com
+Date: Wed, 18 Dec 2013 14:58:04 +0000
+
+
+
+original message

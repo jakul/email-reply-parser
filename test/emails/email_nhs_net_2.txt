@@ -1,0 +1,14 @@
+Dear Recipient
+
+Message message
+
+Regards 
+Sender
+
+From: address@provider
+To: sender@domain.com
+Subject: Re: Some email
+Date: Tue, 21 Jan 2014 12:35:20 +0000
+
+
+original message

@@ -109,6 +109,16 @@ class NHSNETEmailMessageTest(unittest.TestCase):
         message = NHSNETEmailReplyParser.read(text)
         self.assertEquals(2, len(message.fragments))
 
+    def test_nhs_net_quoting2(self):
+        text = open('test/emails/email_nhs_net_2.txt').read()
+        message = NHSNETEmailReplyParser.read(text)
+        self.assertEquals(2, len(message.fragments))
+
+    def test_nhs_net_quoting3(self):
+        text = open('test/emails/email_nhs_net_3.txt').read()
+        message = NHSNETEmailReplyParser.read(text)
+        self.assertEquals(2, len(message.fragments))
+
 
 if __name__ == '__main__':
     unittest.main()

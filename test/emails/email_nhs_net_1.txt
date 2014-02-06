@@ -1,19 +1,9 @@
-Dear Dr Smith,
+Dear Recipient,
 
 Message message message.
 
 Best regards
-
-
-Maria
-
-Maria Bonita
-Practice Manager
-The Practice
-The Health Centre
-Direct Line: 0201 222 333
-Main Practice number: 0201 222 333
-
+Sender
 
 
 From: Company Name [mailto:address@domain.com]
@@ -21,10 +11,4 @@ Sent: 29 March 2013 13:44
 To: recipient one (number one); recipient two (number two)
 Subject: Email subject
 
-
-Warning: This message contains unverified links which may not be safe.  You should only click links if you are sure they are from a trusted source.
-
-
-Dr. Smith said:
-
-Message message message.
+Original message.
