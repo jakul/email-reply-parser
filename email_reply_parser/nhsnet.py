@@ -29,16 +29,27 @@ class NHSNETEmailReplyParser(object):
 class NHSNETEmailMessage(EmailMessage):
     """
     Emails from nhs.net don't include traditional quoting for the original
-    message in a thread, instead they include a block of formatted text like:
+    message, so this class aims to properly detect and remove the message
+    that was replied to.
 
-        From: Company Name [mailto:address@domain.com]
-        Sent: 29 March 2013 13:44
-        To: recipient one (number one); recipient two (number two)
-        Subject: Email subject
+    This class also detects a number of common signatures that the original
+    didn't.
 
-    We search for this block (specifically the words at the start of the lines)
-    and treat everything after this block as quoted.
+    Known limitations:
+      * emails without a line break between the content and the signature
+        do not detect the signature properly
+
     """
+
+    # Detect various nhs.net quoted blocks of the format:
+    #
+    #    From: Company Name [mailto:address@domain.com]
+    #    Sent: 29 March 2013 13:44
+    #    To: recipient one (number one); recipient two (number two)
+    #    Subject: Email subject
+    #
+    # These lines can appear in any order, and sometimes have different names
+    # e.g. `Date` instead of `Sent`.
     MULTI_QUOTE_HDR_REGEX = r'(On\s.*?wrote:|From:\s.*?Sent:\s.*?To:\s.*?Subject:\s.*?\Z|From:\s.*?To:\s.*?Subject:\s.*?Date:\s.*?\Z|From:\s.*?Subject:\s.*?To:\s.*?Date:\s.*?\Z)'
     QUOTED_REGEX = r'(>+)|(From:\s.*?Sent:\s.*?To:\s.*?Subject:\s.*?)|(From:\s.*?To:\s.*?Subject:\s.*?Date:\s.*?|From:\s.*?Subject:\s.*?To:\s.*?Date:\s.*?)'
     # Be a bit more greedy in the signature parsing
