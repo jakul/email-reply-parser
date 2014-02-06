@@ -4,6 +4,7 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from email_reply_parser import EmailReplyParser
+from email_reply_parser.nhsnet import NHSNETEmailReplyParser
 
 
 class EmailMessageTest(unittest.TestCase):
@@ -97,7 +98,16 @@ class EmailMessageTest(unittest.TestCase):
         """ Return EmailMessage instance
         """
         text = open('test/emails/%s.txt' % name).read()
-        return EmailReplyParser.read(text)
+        return NHSNETEmailReplyParser.read(text)
+
+
+
+class NHSNETEmailMessageTest(unittest.TestCase):
+
+    def test_nhs_net_quoting(self):
+        text = open('test/emails/email_nhs_net_1.txt').read()
+        message = NHSNETEmailReplyParser.read(text)
+        self.assertEquals(2, len(message.fragments))
 
 
 if __name__ == '__main__':
