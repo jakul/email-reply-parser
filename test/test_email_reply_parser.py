@@ -119,6 +119,11 @@ class NHSNETEmailMessageTest(unittest.TestCase):
         message = NHSNETEmailReplyParser.read(text)
         self.assertEquals(2, len(message.fragments))
 
+    def test_nhs_net_quoting4(self):
+        text = open('test/emails/email_nhs_net_4.txt').read()
+        message = NHSNETEmailReplyParser.read(text)
+        self.assertEquals(2, len(message.fragments))
+
     def test_regards_signature(self):
         with open('test/emails/email_sig_1.txt') as email:
             self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
@@ -166,6 +171,10 @@ class NHSNETEmailMessageTest(unittest.TestCase):
     def test_many_thanks(self):
         with open('test/emails/email_sig_12.txt') as email:
             self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
+
+    def test_email_disclaimer(self):
+        with open('test/emails/email_sig_13.txt') as email:
+            self.assertTrue("E-MAIL DISCLAIMER" not in NHSNETEmailReplyParser.parse_reply(email.read()))
 
 
 if __name__ == '__main__':
