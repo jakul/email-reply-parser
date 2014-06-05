@@ -129,6 +129,11 @@ class NHSNETEmailMessageTest(unittest.TestCase):
         message = NHSNETEmailReplyParser.read(text)
         self.assertEquals(2, len(message.fragments))
 
+    def test_nhs_remove_signature_2(self):
+        text = open('test/emails/email_nhs_net_6.txt').read()
+        message = NHSNETEmailReplyParser.read(text)
+        self.assertEquals(2, len(message.fragments))
+
     def test_regards_signature(self):
         with open('test/emails/email_sig_1.txt') as email:
             self.assertTrue("Sender" not in NHSNETEmailReplyParser.parse_reply(email.read()))
